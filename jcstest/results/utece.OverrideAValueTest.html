@@ -22,7 +22,7 @@
  </style>
 </head>
 <body>
-<h1>utece.Base128LongConverterTest</h1>
+<h1>utece.OverrideAValueTest</h1>
 <h3>Description and references</h3>
 <p>null</p>
 <h3>Environment</h3>
@@ -79,21 +79,28 @@
 <td nowrap>JVM options: [-XX:-TieredCompilation]
 Iterations: 1
 Time: 10
-Stride: [10, 2048] (capped by TIME)</td>
+Stride: [10, 32] (capped by TIME)</td>
 </tr>
 <tr>
 <td nowrap><b>TC 2</b></td>
-<td nowrap>JVM options: [-XX:TieredStopAtLevel=1]
-Iterations: 1
-Time: 10
-Stride: [10, 1024] (capped by TIME)</td>
-</tr>
-<tr>
-<td nowrap><b>TC 3</b></td>
-<td nowrap>JVM options: [-Xint]
+<td nowrap>JVM options: [-XX:-TieredCompilation]
 Iterations: 1
 Time: 10
 Stride: [10, 64] (capped by TIME)</td>
+</tr>
+<tr>
+<td nowrap><b>TC 3</b></td>
+<td nowrap>JVM options: [-XX:TieredStopAtLevel=1]
+Iterations: 1
+Time: 10
+Stride: [10, 256] (capped by TIME)</td>
+</tr>
+<tr>
+<td nowrap><b>TC 4</b></td>
+<td nowrap>JVM options: [-Xint]
+Iterations: 1
+Time: 10
+Stride: [10, 16] (capped by TIME)</td>
 </tr>
 </table>
 <h3>Observed states</h3>
@@ -103,19 +110,22 @@ Stride: [10, 64] (capped by TIME)</td>
 <th nowrap>TC 1</th>
 <th nowrap>TC 2</th>
 <th nowrap>TC 3</th>
+<th nowrap>TC 4</th>
 <th>Expectation</th>
 <th>Interpretation</th>
 </tr>
 <tr>
 <td align='center'>true, true</td>
-<td align='right' width='10.0%' bgColor=#00ff00>151914</td>
-<td align='right' width='10.0%' bgColor=#00ff00>42041</td>
-<td align='right' width='10.0%' bgColor=#00ff00>1569</td>
+<td align='right' width='7.5%' bgColor=#00ff00>735</td>
+<td align='right' width='7.5%' bgColor=#00ff00>1439</td>
+<td align='right' width='7.5%' bgColor=#00ff00>5643</td>
+<td align='right' width='7.5%' bgColor=#00ff00>383</td>
 <td>ACCEPTABLE</td>
 <td>Default outcome.</td>
 </tr>
 <tr>
 <td></td>
+<td align='center' bgColor='green '>OK</td>
 <td align='center' bgColor='green '>OK</td>
 <td align='center' bgColor='green '>OK</td>
 <td align='center' bgColor='green '>OK</td>

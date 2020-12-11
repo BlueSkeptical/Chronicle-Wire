@@ -41,23 +41,23 @@
 </tr>
 <tr>
 <td nowrap>java.vendor</td>
-<td nowrap>Oracle Corporation</td>
+<td nowrap>Private Build</td>
 </tr>
 <tr>
 <td nowrap>java.version</td>
-<td nowrap>1.8.0_271</td>
+<td nowrap>1.8.0_275</td>
 </tr>
 <tr>
 <td nowrap>java.vm.name</td>
-<td nowrap>Java HotSpot(TM) 64-Bit Server VM</td>
+<td nowrap>OpenJDK 64-Bit Server VM</td>
 </tr>
 <tr>
 <td nowrap>java.vm.vendor</td>
-<td nowrap>Oracle Corporation</td>
+<td nowrap>Private Build</td>
 </tr>
 <tr>
 <td nowrap>java.vm.version</td>
-<td nowrap>25.271-b09</td>
+<td nowrap>25.275-b01</td>
 </tr>
 <tr>
 <td nowrap>os.arch</td>
@@ -65,11 +65,11 @@
 </tr>
 <tr>
 <td nowrap>os.name</td>
-<td nowrap>Windows 10</td>
+<td nowrap>Linux</td>
 </tr>
 <tr>
 <td nowrap>os.version</td>
-<td nowrap>10.0</td>
+<td nowrap>4.4.0-18362-Microsoft</td>
 </tr>
 </table>
 <h3>Test configurations</h3>
@@ -77,23 +77,30 @@
 <tr>
 <td nowrap><b>TC 1</b></td>
 <td nowrap>JVM options: [-XX:-TieredCompilation]
-Iterations: 5
-Time: 1000
-Stride: [10, 10000] (capped by NONE)</td>
+Iterations: 1
+Time: 10
+Stride: [10, 32] (capped by TIME)</td>
 </tr>
 <tr>
 <td nowrap><b>TC 2</b></td>
-<td nowrap>JVM options: [-XX:TieredStopAtLevel=1]
-Iterations: 5
-Time: 1000
-Stride: [10, 10000] (capped by NONE)</td>
+<td nowrap>JVM options: [-XX:-TieredCompilation]
+Iterations: 1
+Time: 10
+Stride: [10, 64] (capped by TIME)</td>
 </tr>
 <tr>
 <td nowrap><b>TC 3</b></td>
+<td nowrap>JVM options: [-XX:TieredStopAtLevel=1]
+Iterations: 1
+Time: 10
+Stride: [10, 256] (capped by TIME)</td>
+</tr>
+<tr>
+<td nowrap><b>TC 4</b></td>
 <td nowrap>JVM options: [-Xint]
-Iterations: 5
-Time: 1000
-Stride: [10, 4096] (capped by TIME)</td>
+Iterations: 1
+Time: 10
+Stride: [10, 32] (capped by TIME)</td>
 </tr>
 </table>
 <h3>Observed states</h3>
@@ -103,19 +110,22 @@ Stride: [10, 4096] (capped by TIME)</td>
 <th nowrap>TC 1</th>
 <th nowrap>TC 2</th>
 <th nowrap>TC 3</th>
+<th nowrap>TC 4</th>
 <th>Expectation</th>
 <th>Interpretation</th>
 </tr>
 <tr>
 <td align='center'>true, true</td>
-<td align='right' width='10.0%' bgColor=#00ff00>3788222</td>
-<td align='right' width='10.0%' bgColor=#00ff00>1180471</td>
-<td align='right' width='10.0%' bgColor=#00ff00>142673</td>
+<td align='right' width='7.5%' bgColor=#00ff00>745</td>
+<td align='right' width='7.5%' bgColor=#00ff00>1479</td>
+<td align='right' width='7.5%' bgColor=#00ff00>7219</td>
+<td align='right' width='7.5%' bgColor=#00ff00>785</td>
 <td>ACCEPTABLE</td>
 <td>Default outcome.</td>
 </tr>
 <tr>
 <td></td>
+<td align='center' bgColor='green '>OK</td>
 <td align='center' bgColor='green '>OK</td>
 <td align='center' bgColor='green '>OK</td>
 <td align='center' bgColor='green '>OK</td>

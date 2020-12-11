@@ -22,7 +22,7 @@
  </style>
 </head>
 <body>
-<h1>utece.Base128LongConverterTest</h1>
+<h1>utece.TextWithArraysTest</h1>
 <h3>Description and references</h3>
 <p>null</p>
 <h3>Environment</h3>
@@ -79,21 +79,28 @@
 <td nowrap>JVM options: [-XX:-TieredCompilation]
 Iterations: 1
 Time: 10
-Stride: [10, 2048] (capped by TIME)</td>
+Stride: [10, 64] (capped by TIME)</td>
 </tr>
 <tr>
 <td nowrap><b>TC 2</b></td>
-<td nowrap>JVM options: [-XX:TieredStopAtLevel=1]
+<td nowrap>JVM options: [-XX:-TieredCompilation]
 Iterations: 1
 Time: 10
-Stride: [10, 1024] (capped by TIME)</td>
+Stride: [10, 256] (capped by TIME)</td>
 </tr>
 <tr>
 <td nowrap><b>TC 3</b></td>
-<td nowrap>JVM options: [-Xint]
+<td nowrap>JVM options: [-XX:TieredStopAtLevel=1]
 Iterations: 1
 Time: 10
 Stride: [10, 64] (capped by TIME)</td>
+</tr>
+<tr>
+<td nowrap><b>TC 4</b></td>
+<td nowrap>JVM options: [-Xint]
+Iterations: 1
+Time: 10
+Stride: [2, 2] (capped by TIME)</td>
 </tr>
 </table>
 <h3>Observed states</h3>
@@ -103,22 +110,25 @@ Stride: [10, 64] (capped by TIME)</td>
 <th nowrap>TC 1</th>
 <th nowrap>TC 2</th>
 <th nowrap>TC 3</th>
+<th nowrap>TC 4</th>
 <th>Expectation</th>
 <th>Interpretation</th>
 </tr>
 <tr>
-<td align='center'>true, true</td>
-<td align='right' width='10.0%' bgColor=#00ff00>151914</td>
-<td align='right' width='10.0%' bgColor=#00ff00>42041</td>
-<td align='right' width='10.0%' bgColor=#00ff00>1569</td>
-<td>ACCEPTABLE</td>
-<td>Default outcome.</td>
+<td align='center'>false, false</td>
+<td align='right' width='7.5%' bgColor=#ff0000>1409</td>
+<td align='right' width='7.5%' bgColor=#ff0000>6657</td>
+<td align='right' width='7.5%' bgColor=#ff0000>1419</td>
+<td align='right' width='7.5%' bgColor=#ff0000>43</td>
+<td>FORBIDDEN</td>
+<td>No default case provided, assume FORBIDDEN</td>
 </tr>
 <tr>
 <td></td>
-<td align='center' bgColor='green '>OK</td>
-<td align='center' bgColor='green '>OK</td>
-<td align='center' bgColor='green '>OK</td>
+<td align='center' bgColor='red '>FAILED</td>
+<td align='center' bgColor='red '>FAILED</td>
+<td align='center' bgColor='red '>FAILED</td>
+<td align='center' bgColor='red '>FAILED</td>
 <td></td>
 <td></td>
 </tr>
